@@ -1,0 +1,40 @@
+.l-layout {
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	.l-page {
+		min-height: 100%;
+		overflow-x: hidden;
+	}
+
+	.l-head,
+	.l-main,
+	.l-foot {
+		margin: 0 auto;
+		max-width: @page-width-max;
+	}
+
+	.l-head {
+		.box-shadow(@shadow-box);
+	}
+
+	.l-body {
+		position: relative;
+		width: 100%;
+		overflow-y: hidden;
+	}
+	.l-main {
+	}
+}
+
+@media screen and (max-width: @bp-m) {
+	.mod-layout {
+		
+	}
+}
+
+@media print {
+	.mod-layout {
+		
+	}
+}

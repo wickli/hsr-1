@@ -1,0 +1,48 @@
+// placeholder color
+::-webkit-input-placeholder { color:@lightgrey; font-weight: normal; font-style: normal; }
+:-moz-placeholder { color:@lightgrey; font-weight: normal; font-style: normal; opacity: 1; } /* firefox 4-18 */
+::-moz-placeholder { color:@lightgrey; font-weight: normal; font-style: normal; opacity: 1; } /* firefox 19+ */
+:-ms-input-placeholder { color:@lightgrey; font-weight: normal; font-style: normal;  } /* ie 10+ */
+input:-moz-placeholder { color:@lightgrey; font-weight: normal; font-style: normal; }
+
+
+// buttons
+.btn {
+	position: relative;
+	display: inline-block;
+	border: none;
+	padding: 5px;
+	width: 100%;
+
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: @white;
+	background-color: @c-active;
+	outline: none;
+
+	line-height: normal;
+
+	.no-select();
+	.transition(background-color 300ms ease);
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: darken(@c-active,6%);
+	}
+}
+
+select,
+label,
+input[type=checkbox] {
+	cursor: pointer;
+}
+
+input[type=text],
+textarea {
+	border: none;
+	background-color: transparent;
+	outline: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

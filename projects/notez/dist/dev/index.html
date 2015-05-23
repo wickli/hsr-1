@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html class="l-layout mod-layout">
+	<head>
+		<title>Notez home</title>
+
+		<meta charset="utf-8" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<meta name="keywords" content=""/>
+		<meta name="description" content="Page description for all sort of search engines" />
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+		<link rel="stylesheet" href="css/styles.min.css" type="text/css" />
+
+		<!--script src="js/head.min.js"></script-->
+	</head>
+	<body>
+		<div class="l-page">
+			<header class="l-head">
+				<!-- header -->
+			</header>
+
+			<main class="l-main">
+				<div class="controls">
+					<div class="controls-primary">
+						<div class="controls-column">
+							<button class="btn js-new"><i class="icon-file-empty"></i>Create new note</button>
+						</div>
+
+						<div class="controls-column">
+							<select class="js-switch-style">
+								<option value="1" selected>default</option>
+								<option value="2">BlackWhite-Style</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="controls-secondary">
+						<div class="controls-column">
+							<a href="#" class="js-sort" data-sort="due">By finish date</a>
+							<a href="#" class="js-sort" data-sort="created">By created date</a>
+							<a href="#" class="js-sort" data-sort="level">By importance</a>
+						</div>
+
+						<div class="controls-column">
+							<a href="#" class="js-filter" data-filter="done">Show finished</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="items">
+					<!-- note item -->
+					<div class="item">
+						<div class="item-col size30">
+							<div class="item-due">
+								<p>Nächsten Mittwoch</p>
+								<input type="checkbox" id="inp1" name="inp1" value="">
+								<label for="inp1">Finished (today)</label>
+							</div>
+						</div>
+
+						<div class="item-col size50">
+							<div class="line">
+								<div class="col size50 item-title">
+									<p>CAS FEE Selbststudium / Projekt Aufgaben erledigen</p>
+								</div>
+								<div class="col size50 item-level" title="Wichtigkeit">
+									<i class="icon-power"></i>
+									<i class="icon-power"></i>
+								</div>
+							</div>
+							<div class="item-desc js-expand">
+								<p class="ellipsis">HTML für die note App erstellen. CSS erstellen für die note App. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam.</p>
+								<i class="icon-zoom-in"></i>
+							</div>
+						</div>
+
+						<div class="item-col size20">
+							<div class="item-action">
+								<button class="btn js-edit" data-item="1"><i class="icon-pencil2"></i>Edit</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- note item -->
+					<div class="item">
+						<div class="item-col size30">
+							<div class="item-due">
+								<p>Nächsten Donnerstag</p>
+								<input type="checkbox" id="inp2" name="inp2" value="">
+								<label for="inp2">Finished</label>
+							</div>
+						</div>
+
+						<div class="item-col size50">
+							<div class="line">
+								<div class="col size50 item-title">
+									<p>titel 2</p>
+								</div>
+								<div class="col size50 item-level">
+									<i class="icon-power"></i>
+								</div>
+							</div>
+							<div class="item-desc js-expand">
+								<p class="ellipsis">Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam.</p>
+								<i class="icon-zoom-in"></i>
+							</div>
+						</div>
+
+						<div class="item-col size20">
+							<div class="item-action">
+								<button class="btn js-edit" data-item="2"><i class="icon-pencil2"></i>Edit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="l-foot">
+				<!-- footer -->
+			</footer>
+		</div>
+
+		<script src="js/script.min.js"></script>
+	</body>
+</html>

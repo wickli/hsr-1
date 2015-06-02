@@ -18,7 +18,88 @@
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
 
-		<!--script src="js/head.min.js"></script-->
+        <script id="notez-template" type="text/x-handlebars-template">
+            {{#each this}}
+            <li class="item full">
+                <div class="item-col one_fifth first">
+                    <div class="item-due">
+                        <p>{{this.date}}</p>
+                        <input type="checkbox" id="inp1" name="inp1" value="">
+                        <label for="inp1">Finished (today)</label>
+                    </div>
+                </div>
+
+                <div class="item-col three_fifth">
+                    <div class="line">
+                        <div class="col one_half first item-title">
+                            <p>{{this.title}}</p>
+                        </div>
+                        <div class="col one_half item-level" title="Wichtigkeit">
+                            {{this.rating}}
+                        </div>
+                    </div>
+                    <div class="item-desc js-expand">
+                        <p class="ellipsis">{{this.text}}</p>
+                        <i class="icon-zoom-in"></i>
+                    </div>
+                </div>
+
+                <div class="item-col one_fifth">
+                    <div class="item-action">
+                        <button class="btn js-edit" data-notezId="{{this.id}}"><i class="icon-pencil2"></i>Edit</button>
+                    </div>
+                </div>
+            </li>
+
+            {{/each}}
+        </script>
+        <script>
+            /*var notez = [
+                {"id":"01", "date":"15.12.2015", "title":"Notez 1", "text":"Parturient quam eu porttitor morbi nibh a parturient parturient fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":3},
+                {"id":"02", "date":"15.12.2015", "title":"CAS FEE", "text":"Parturient quam eu porttitor morbi nibh a parturient parturient fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":2},
+                {"id":"03", "date":"15.12.2015", "title":"My Notez", "text":"Fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":1},
+            ];
+            function notezCompare(n1, n2) {
+                return n1.rating < n2.rating;
+            }
+            function notezFind(id) {
+                for (var i = 0; i < notez.length; i++) {
+                    if (notez[i].id == id) {
+                        return notez[i];
+                    }
+                }
+                return {};
+            }
+            function notezRating (notezId, delta) {
+                var notez = findSong(notezId);
+                notez.rating += delta;
+                notezList();
+            }
+            function bubbledClickEventHandler(event) {
+                //takes advantage of event bubbling
+                var buttonText = event.target.textContent;
+                var buttonSongId = event.target.getAttribute("data-notezId");
+                if (buttonText == "+") {
+                    notezRating(buttonSongId, 1);
+                    return;
+                }
+                if (buttonText == "-") {
+                    notezRating(buttonSongId, -1);
+                    return;
+                }
+                console.log("unknown click target:"+buttonText);
+            }
+            var createNotezHtml = Handlebars.compile(document.getElementById("notez-template").innerText);
+            function notezList () {
+                $("#notezlist").html(createNotezHtml(notez.sort(notezCompare)));
+            }
+            $(function() {
+                notezList();
+                $("#notezlist").on("click", bubbledClickEventHandler);
+            });*/
+        </script>
+
+		<script src="js/head.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -30,7 +111,7 @@
 				<div class="controls">
 					<div class="controls-primary">
 						<div class="controls-column">
-							<button class="btn js-new"><i class="icon-file-empty"></i>Create new note</button>
+							<a class="btn js-new" href="edit.html"><i class="icon-file-empty"></i>Create new note</a>
 						</div>
 
 						<div class="controls-column">
@@ -43,85 +124,19 @@
 
 					<div class="controls-secondary">
 						<div class="controls-column">
-							<a href="#" class="js-sort" data-sort="due">By finish date</a>
-							<a href="#" class="js-sort" data-sort="created">By created date</a>
-							<a href="#" class="js-sort" data-sort="level">By importance</a>
+							<a href="#" class="btn one_third first js-sort" data-sort="due">By finish date</a>
+							<a href="#" class="btn one_third js-sort" data-sort="created">By created date</a>
+							<a href="#" class="btn one_third js-sort" data-sort="level">By importance</a>
 						</div>
 
 						<div class="controls-column">
-							<a href="#" class="js-filter" data-filter="done">Show finished</a>
+							<a href="#" class="btn js-filter" data-filter="done">Show finished</a>
 						</div>
 					</div>
 				</div>
-
-				<div class="items">
-					<!-- note item -->
-					<div class="item">
-						<div class="item-col one_fifth first">
-							<div class="item-due">
-								<p>Nächsten Mittwoch</p>
-								<input type="checkbox" id="inp1" name="inp1" value="">
-								<label for="inp1">Finished (today)</label>
-							</div>
-						</div>
-
-						<div class="item-col three_fifth">
-							<div class="line">
-								<div class="col one_half item-title">
-									<p>CAS FEE Selbststudium / Projekt Aufgaben erledigen</p>
-								</div>
-								<div class="col one_half item-level" title="Wichtigkeit">
-									<i class="icon-power"></i>
-									<i class="icon-power"></i>
-								</div>
-							</div>
-							<div class="item-desc js-expand">
-								<p class="ellipsis">HTML für die note App erstellen. CSS erstellen für die note App. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam.</p>
-								<i class="icon-zoom-in"></i>
-							</div>
-						</div>
-
-						<div class="item-col one_fifth">
-							<div class="item-action">
-								<button class="btn js-edit" data-item="1"><i class="icon-pencil2"></i>Edit</button>
-							</div>
-						</div>
-					</div>
-
-					<!-- note item -->
-					<div class="item">
-						<div class="item-col one_fifth first">
-							<div class="item-due">
-								<p>Nächsten Mittwoch</p>
-								<input type="checkbox" id="inp1" name="inp1" value="">
-								<label for="inp1">Finished (today)</label>
-							</div>
-						</div>
-
-						<div class="item-col three_fifth">
-							<div class="line">
-								<div class="col one_half item-title">
-									<p>CAS FEE Selbststudium / Projekt Aufgaben erledigen</p>
-								</div>
-								<div class="col one_half item-level" title="Wichtigkeit">
-									<i class="icon-power"></i>
-									<i class="icon-power"></i>
-								</div>
-							</div>
-							<div class="item-desc js-expand">
-								<p class="ellipsis">HTML für die note App erstellen. CSS erstellen für die note App. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam. Lorem ipsum dolor sit amet ceterum censeo carthaginem esse delendam. In dubio pro req urbi et orbi. Quid pro quo ipsum dolor sit amet ceterum censeo carthaginem esse delendam.</p>
-								<i class="icon-zoom-in"></i>
-							</div>
-						</div>
-
-						<div class="item-col one_fifth">
-							<div class="item-action">
-								<button class="btn js-edit" data-item="1"><i class="icon-pencil2"></i>Edit</button>
-							</div>
-						</div>
-					</div>
-
-				</div>
+                <h1>Notez</h1>
+                <ul id="notezlist"></ul>
+                <label id="numberOfElements"></label><br>
 			</main>
 
 			<footer>

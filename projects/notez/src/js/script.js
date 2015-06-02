@@ -1,61 +1,37 @@
-(function($) {
-	$(document).ready(function() {
-		var $ctx = $(this).find('.mod-layout');
-console.log($ctx);
+$(function(){
+    /* Edit */
+    $(".js-store").click(function(event) {
+        var editTemp = $("#editform").serializeJSON();
+        console.log(editTemp);
+        event.preventDefault(); //STOP default action
+        var editStore = JSON.stringify(editTemp);
+        localStorage.setItem('editData', editStore);
+        window.location.replace("index.html");
+    });
+    /* Load */
+    notez = [];
+    var notezData = localStorage.getItem('editData');
+    /*console.log(notezData);
+    $.each(notezData, function(key, value){
+        console.log(key + ' = ' + value);
+        notez += '"' + key + '" :"' + value + '"';
+    });*/
+    notez = notezData;
+    console.log(notez);
+    /*notez = [
+        {"id":"01", "date":"15.12.2015", "title":"Notez 1", "text":"Parturient quam eu porttitor morbi nibh a parturient parturient fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":3},
+        {"id":"02", "date":"15.12.2015", "title":"CAS FEE", "text":"Parturient quam eu porttitor morbi nibh a parturient parturient fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":2},
+        {"id":"03", "date":"15.12.2015", "title":"My Notez", "text":"Fringilla donec tortor condimentum a torquent hac.Porttitor vestibulum cubilia adipiscing id fermentum ante cras vestibulum nam fermentum curabitur fusce ante.", "rating":1},
+    ];*/
+    /* View */
+    /*var createNotezHtml = Handlebars.compile(document.getElementById("notez-template").innerText);
+    function notezList () {
+        $("#notezlist").html(createNotezHtml(notez));
+    }
+    notezList();*/
+    var source   = $("#notez-template").html();
+    var template = Handlebars.compile(source);
+    //console.log(data);
+    $('#notezlist').html(template(notez));
+});
 
-		// BIND
-
-		// create new note
-		$ctx.on('click', '.js-new', function(e){
-			e.preventDefault();
-console.log('create new note');
-		});
-
-		// switch style
-		$ctx.on('click', '.js-switch-style', function(e){
-			e.preventDefault();
-console.log('switch style');
-		});
-
-		// sort by data-sort
-		$ctx.on('click', '.js-sort', function(e){
-			e.preventDefault();
-console.log('sort by data-sort');
-
-			var $sorter = $(this),
-				by = $sorter.data('sort');
-console.log('data-sort=',by);
-		});
-
-		// filter by data-filter
-		$ctx.on('click', '.js-filter', function(e){
-			e.preventDefault();
-console.log('filter by data-filter');
-
-			var $filter = $(this),
-				by = $filter.data('filter');
-console.log('data-filter=',by);
-		});
-
-		// edit via data-item
-		$ctx.on('click', '.js-edit', function(e){
-			e.preventDefault();
-console.log('edit via data-item');
-
-			var $item = $(this),
-				i = $item.data('item');
-console.log('data-item=',i);
-		});
-
-		// toggle item detail and icon
-		$ctx.on('click', '.js-expand', function(e){
-console.log('toggle item detail and icon');
-			var $this= $(this),
-				$p = $this.find('p'),
-				$icon = $this.find('i');
-
-			$p.toggleClass('ellipsis');
-			$icon.toggleClass('icon-zoom-in').toggleClass('icon-zoom-out');
-		});
-	});
-})($);

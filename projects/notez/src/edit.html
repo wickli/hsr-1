@@ -13,14 +13,35 @@
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
-    <link rel="stylesheet" href="css/styles.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/styles.min.css" type="text/css"/>
 
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
 
     <script src="js/head.min.js"></script>
+
+    <script id="edit-template" type="text/x-handlebars-template">
+                <input name="id" type="hidden" id="id" value="{{id}}">
+                <label class="one_fifth first">Titel</label>
+                <input name="title" type="text" id="title" class="txt four_fifth" value="{{title}}" placehold="{{title}}" required>
+                <label class="one_fifth first">Beschreibung</label>
+                <textarea name="text" rows="2" cols="20" id="text" class="txt four_fifth" value="{{text}}" >{{text}}</textarea>
+                <label class="one_fifth first">Wichtigkeit</label>
+                <div class="rating four_fifth">
+                    {{rating}}
+                    <input type="radio" name="rating" value="rate1"><i class="icon-power"></i>
+                    <input type="radio" name="rating" value="rate2"><i class="icon-power"></i>
+                </div>
+                <label class="one_fifth first">Erledigt</label>
+                <input type="checkbox" class="one_fifth" name="done" title="done" checked="{{done}}">
+                <label class="one_fifth first">Datum</label>
+                <input type="date" name="date" class="date four_fifth" value="{{date}}" placehold="{{date}}">
+
+    </script>
+
 </head>
-<body>
+<body class="editPage">
 
 <div class="container">
     <header>
@@ -28,25 +49,10 @@
     </header>
 
     <main>
-
         <form name="editform" id="editform" method="POST">
-
-        <div class="full">
-                <input name="id" type="hidden" id="id" value="0">
-                <label class="one_fifth first">Titel</label>
-                <input name="title" type="text" id="title" mandatory="1" class="txt four_fifth" required>
-                <label class="one_fifth first">Beschreibung</label>
-                <textarea name="text" rows="2" cols="20" id="text" class="txt four_fifth"></textarea>
-                <label class="one_fifth first">Wichtigkeit</label>
-
-                <div class="rating four_fifth">
-                    <input type="radio" name="rating" value="rate1"><i class="icon-power"></i>
-                    <input type="radio" name="rating" value="rate2"><i class="icon-power"></i>
-                </div>
-                <label class="one_fifth first">Erledigt</label>
-                <input type="date" name="date" class="date four_fifth">
+            <div class="full">
+                <div id="edit"></div>
                 <input class="btn js-store" type="submit" value="SPEICHERN">
-
                 <div class="four_fifth first">&nbsp;</div>
                 <div class="one_fifth"><input class="btn" type="reset" value="CANCEL"></div>
             </div>
